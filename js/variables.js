@@ -26,7 +26,7 @@ var timeline_parallax = true;                   //If false, the timeline items w
 
 
 //CONTACT FORM VARIABLES
-var contact_form_success_msg = "Merci d'avoir confirmer votre présence! 😃 ";
+var contact_form_success_msg = "Merci d'avoir confirmé votre présence! 😃 ";
 var contact_form_error_msg = "Erreur dans l'envoi du formulaire 😟 ";
 var contact_form_recaptcha_error_msg = "Error verifying reCaptcha!";
 
