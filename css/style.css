@@ -5276,7 +5276,7 @@ textarea.form-control {
 }
 
 .form-check-input[type=radio] {
-  border-color: #fe828c;
+  border-color: #73777b;
 }
 
 .form-check-input:checked[type=radio] {
@@ -5292,7 +5292,7 @@ textarea.form-control {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
-  border-color: #fe828c;
+  border-color: #73777b;
 }
 
 .form-check-input.is-invalid {
@@ -5312,7 +5312,7 @@ textarea.form-control {
 }
 
 .form-check-wrapper {
-  color: #fe828c;
+  color: #73777b;
   margin-bottom: 20px;
 }
 .form-check-wrapper > label {

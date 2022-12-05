@@ -848,7 +848,8 @@ var Neela;
                 var $fields = $("input, textarea, select, fieldset", $form);
                 var len = 0;
                 var re = /\S+@\S+\.\S+/;
-                var html = "contact";
+                var html = "";
+                var formDataNameOrder = [];
                 var error = false;
                 var showSuccess;
                 var stopSpin;
@@ -900,36 +901,35 @@ var Neela;
                         } else if ($field.attr("id") !== "g-recaptcha-response" && $field.attr("id") !== "recaptcha-token") {
                             $field.removeClass("is-invalid");
                             $("input", $field).removeClass("is-invalid");
+                            formDataNameOrder.push($field.attr("name"));
 
                             if ($field.hasClass("subject")) {
-                                html += "&subject=" + encodeHtml($field.val());
-                                html += "&subject_label=" + encodeHtml($field.attr("name"));
+                                html += "&"+encodeURIComponent($field.attr("name"))+"=" + encodeURIComponent($field.val());
                             } else if ($field.hasClass("fromName") || $field.hasClass("fromname")) {
-                                html += "&fromname=" + encodeHtml($field.val());
-                                html += "&fromname_label=" + encodeHtml($field.attr("name"));
+                                html += "&"+encodeURIComponent($field.attr("name"))+"=" + encodeURIComponent($field.val());
                             } else if ($field.hasClass("fromEmail") || $field.hasClass("fromemail")) {
-                                html += "&fromemail=" + encodeHtml($field.val());
-                                html += "&fromemail_label=" + encodeHtml($field.attr("name"));
-                            } else {
+                                html += "&"+encodeURIComponent($field.attr("name"))+"=" + encodeURIComponent($field.val());
+                            } else if ($field.hasClass("fromPhone") || $field.hasClass("fromphone")) {
+                                 html += "&"+encodeURIComponent($field.attr("name"))+"=" + encodeURIComponent($field.val());
+                             }  else {
                                 if ($field.attr("type") === "radio") {
                                     if ($("input[id='" + $field.attr("id") + "']").is(":checked")) {
-                                        html += "&field" + len + "_label=" + encodeHtml($field.attr("name"));
-                                        html += "&field" + len + "_value=" + encodeHtml($.trim($("label[for='" + $field.attr("id") + "']").text()));
+                                        html += "&"+encodeURIComponent($field.attr("name"))+"=" + encodeURIComponent($.trim($("label[for='" + $field.attr("id") + "']").text()));
                                     }
                                 } else if ($field.is("fieldset")) {
-                                    html += "&field" + len + "_label=" + encodeHtml($field.attr("name"));
+                                    html += "&"+encodeURIComponent($field.attr("name"));
 
                                     $("#" + $field.attr("id") + " input:checkbox:checked").each(function (index) {
                                         if (index === 0) {
-                                            html += "&field" + len + "_value=";
-                                            html += encodeHtml($.trim($("label[for='" + $(this).attr("id") + "']").text()));
+                                            html += "=";
+                                            html += encodeURIComponent($.trim($("label[for='" + $(this).attr("id") + "']").text()));
                                         } else {
-                                            html += ", " + encodeHtml($.trim($("label[for='" + $(this).attr("id") + "']").text()));
+                                            html += ", " + encodeURIComponent($.trim($("label[for='" + $(this).attr("id") + "']").text()));
                                         }
                                     });
                                 } else {
-                                    html += "&field" + len + "_label=" + encodeHtml($field.attr("name"));
-                                    html += "&field" + len + "_value=" + encodeHtml($field.val());
+                                    html += "&field" + len + "_label=" + encodeURIComponent($field.attr("name"));
+                                    html += "&field" + len + "_value=" + encodeURIComponent($field.val());
                                 }
 
                                 len += 1;
@@ -938,7 +938,7 @@ var Neela;
                     }
                 });
 
-                html += "&len=" + len;
+                html += "&formDataNameOrder="+encodeURIComponent(JSON.stringify(["Name","Phone","Meal Preferences","Message"]));
 
                 if ($(".g-recaptcha").length) {
                     html += "&recaptcha=" + grecaptcha.getResponse();
@@ -961,12 +961,14 @@ var Neela;
 
                     $.ajax({
                         type: "POST",
-                        url: "contact.php",
+                        url: "https://script.google.com/macros/s/AKfycbxKoM3bqKmEBhcv3quOSygO8aUgQpIVj-vz1iPBKa1DPIcQlDskQwFNpkF3HuIoFYPW/exec",
                         data: html,
                         success: function (msg) {
                             stopSpin();
 
-                            if (msg === "ok") {
+
+                            console.log("uuu", msg)
+                            if (msg.result === "success") {
                                 showSuccess();
                                 $form[0].reset();
                             } else {
