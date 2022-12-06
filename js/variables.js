@@ -18,7 +18,7 @@ var hero_full_screen = true;                    //If true, the hero section will
 var slidehow_images = [
     "images/background/slide_1.jpeg",
     "images/background/slide_2.jpeg",
-    "images/background/slide_3.png"
+    "images/confirmer_votre_présence.png"
 ];
 
 //TIMELINE PARALLAX
@@ -26,7 +26,7 @@ var timeline_parallax = true;                   //If false, the timeline items w
 
 
 //CONTACT FORM VARIABLES
-var contact_form_success_msg = "Merci d'avoir confirmé votre présence! 😃 ";
+var contact_form_success_msg = "Merci d'avoir confirmé votre présence! 😃  N'oubliez d'envoyer votre virement interac avant le 6 Janvier 2023 pour participer à la réception (voir plus haut pour infos)";
 var contact_form_error_msg = "Erreur dans l'envoi du formulaire 😟 ";
 var contact_form_recaptcha_error_msg = "Error verifying reCaptcha!";
 
