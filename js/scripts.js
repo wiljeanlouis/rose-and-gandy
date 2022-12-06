@@ -966,8 +966,6 @@ var Neela;
                         success: function (msg) {
                             stopSpin();
 
-
-                            console.log("uuu", msg)
                             if (msg.result === "success") {
                                 showSuccess();
                                 $form[0].reset();

@@ -5070,7 +5070,7 @@ section.side-flowers {
 /* #RSVP
 ================================================== */
 #rsvp {
-  background: linear-gradient(#fff 50%, #fe828c 50%) no-repeat;
+  /* background: linear-gradient(#fff 50%, #fe828c 50%) no-repeat; */
 }
 #rsvp::before {
   content: "";
@@ -5086,7 +5086,7 @@ section.side-flowers {
   margin-top: -1px;
 }
 #rsvp.section-bg-color {
-  background: linear-gradient(#f9f9f9 50%, #fe828c 50%) no-repeat;
+  /* background: linear-gradient(#f9f9f9 50%, #fe828c 50%) no-repeat; */
 }
 #rsvp.section-bg-color::before {
   border-color: #f9f9f9 transparent transparent transparent;
