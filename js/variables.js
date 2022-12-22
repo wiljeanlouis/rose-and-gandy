@@ -18,7 +18,7 @@ var hero_full_screen = true;                    //If true, the hero section will
 var slidehow_images = [
     "images/background/slide_1.jpeg",
     "images/background/slide_2.jpeg",
-    "images/confirmer_votre_présence.png"
+    "images/confirmer_votre_presence_v1.png"
 ];
 
 //TIMELINE PARALLAX
